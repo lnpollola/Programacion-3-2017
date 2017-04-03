@@ -31,7 +31,8 @@ Class Empleado Extends Persona{
 	 function ToString()
 	{ 	
 		echo Parent::ToString();
-
+		echo  "Legajo: "    .$this->getLegajo()    ." - ".
+				"Sueldo: "    .$this->getSueldo()    ."<Br>";
 
 	 }
 
