@@ -7,8 +7,9 @@ Class Empleado Extends Persona{
 	protected $_legajo;
 	protected $_sueldo;
 
-	public function __construct (string $nombre, string $apellido, int $dni, string $sexo, int $legajo, float $sueldo)
+	public function __construct ($nombre, $apellido, $dni, $sexo, $legajo, $sueldo)
 	{
+		parent::__construct($nombre,$apellido,$dni,$sexo);
 		$this->_legajo = $legajo;
 		$this->_sueldo = $sueldo;
 	}
@@ -29,12 +30,9 @@ Class Empleado Extends Persona{
 
 	 function ToString()
 	{ 	
-		echo "Nombre: ".$this->getNombre()."<Br>";
-		echo "Apellido: ".$this->getApellido()."<Br>";
-		echo "Sexo: ".$this->getSexo()."<Br>";
-		echo "DNI: ".$this->getDni()."<Br>";
-		echo "Sueldo: ".$this->getSueldo()."<Br>";
-	 	echo "Legajo: ".$this->getLegajo()."<Br>";
+		echo Parent::ToString();
+
+
 	 }
 
 
