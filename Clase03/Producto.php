@@ -15,7 +15,7 @@
 
       function ToString()
       {
-          return $this->_codigo." - ".$this->_descripcion." - ".$this->_importe;
+          return $this->_codigo." - ".$this->_descripcion." - ".$this->_importe."\n";
       }
 
 
