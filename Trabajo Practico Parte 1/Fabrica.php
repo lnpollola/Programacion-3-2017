@@ -56,6 +56,11 @@ class Fabrica
 
 	}
 
+	function EliminarEmpleadosRepetidos ()
+	{
+		$array = array_unique($this->_empleados,SORT_REGULAR);
+		$this->_empleados = $array;
+	}
 
 
 
