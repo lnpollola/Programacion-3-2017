@@ -1,7 +1,7 @@
 <?php
 
-   include "Producto.php";
-//    include "Container.php";
+   //include "Producto.php";
+   include "Container.php";
 
 //    $producto = new Producto(123,"caramelo",2); 
 
@@ -45,27 +45,56 @@ $prod = new Producto($_POST["nombre"],$_POST["descripcion"],$_POST["importe"]);
 
 if(isset($_POST["guardar"]))
     {
-         $archivo = fopen("productosconhtml.txt","w");
+         if(!file_exists("productosconhtml.txt"))
+            {
+            $archivo = fopen("productosconhtml.txt","w");
 
-        fwrite($archivo,$prod->ToString());
-        fclose($archivo);
+            fwrite($archivo,$prod->ToString());
+            fclose($archivo);
+            }
+            else
+                {
+                         $archivo = fopen("productosconhtml.txt","a");
+
+                        fwrite($archivo,$prod->ToString());
+                        fclose($archivo);
+
+                }
+
     }
     else
         {
-            $archivo = fopen("productosconhtml.txt","r");
-            $cadena= fgets($archivo,4096);
+            $container = new Container("Sudu123456");
+            
+
+            $container->LeerDeArchivo();
+
+            foreach($container->producto as $key)
+            {
+            echo $key->ToString()."\n";
+
+            }     
+            
+                   // $archivo = fopen("productosconhtml.txt","r");
+            // while(!feof($archivo))
+            // {
+            // $cadena= fgets($archivo,4096);
+            // $prod = new Producto($miArray[0],$miArray[1],$miArray[2]);
 
             
-            echo $cadena;
+            // //echo $cadena;
 
-            $miArray = explode("-",$cadena);
+            // $miArray = explode(";",$cadena);
+            // }
+            // //var_dump($miArray);
 
-            var_dump($miArray);
+            // $prod = new Producto($miArray[0],$miArray[1],$miArray[2]);
 
-            $prod = new Producto($miArray[0],$miArray[1],$miArray[2]);
+            // echo $prod->ToString();
 
-            echo $prod->ToString();
         }
+
+
 
 //1En la clase container crear el metodo leer de archivo, que lea de un archivo un listado de producto cuyos atributos estan separados por punto y coma, luego cargar el array de producto con los objetos creados a partir de los datos del archivo 
 //2agregar un cuadro de texto con el nombre del archivo en donde se van a guardar los datos 
