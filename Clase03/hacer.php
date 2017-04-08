@@ -58,8 +58,10 @@ if(isset($_POST["guardar"]))
                 {
                        $date=date('dmy His');
                        
+
+
                        mkdir("Backup".$date,0777);
-                       copy("asd.txt","Backup".$date."/".$texto.".txt");
+                       copy($texto.".txt","Backup".$date."/".$texto.".txt");
                         //$archivo = fopen("Backup".$date".txt","w");
 
                        //fwrite($archivo,$prod->ToString());

@@ -1,0 +1,4 @@
+Apellido: Vogel - Nombre: Damian - Dni: 30083226 - Sexo: M - Legajo: 123 - Sueldo: 
+Apellido: asdasda - Nombre: dasd - Dni: 2355 - Sexo: M - Legajo: 3 - Sueldo: 234
+Apellido: d - Nombre: a - Dni: 346 - Sexo: M - Legajo: 3 - Sueldo: 21314
+Apellido: Vogel - Nombre: Damian - Dni: 34567 - Sexo: M - Legajo: 434 - Sueldo: 152
