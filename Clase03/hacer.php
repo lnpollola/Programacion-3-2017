@@ -45,19 +45,25 @@ $prod = new Producto($_POST["nombre"],$_POST["descripcion"],$_POST["importe"]);
 
 if(isset($_POST["guardar"]))
     {
-         if(!file_exists("productosconhtml.txt"))
+         $texto = $_POST["archivo"];
+         
+         if(!file_exists($texto.".txt"))
             {
-            $archivo = fopen("productosconhtml.txt","w");
+            $archivo = fopen($texto.".txt","w");
 
             fwrite($archivo,$prod->ToString());
             fclose($archivo);
             }
             else
                 {
-                         $archivo = fopen("productosconhtml.txt","a");
+                       $date=date('dmy His');
+                       
+                       mkdir("Backup".$date,0777);
+                       copy("asd.txt","Backup".$date."/".$texto.".txt");
+                        //$archivo = fopen("Backup".$date".txt","w");
 
-                        fwrite($archivo,$prod->ToString());
-                        fclose($archivo);
+                       //fwrite($archivo,$prod->ToString());
+                      //  fclose($archivo);
 
                 }
 
@@ -96,8 +102,16 @@ if(isset($_POST["guardar"]))
 
 
 
-//1En la clase container crear el metodo leer de archivo, que lea de un archivo un listado de producto cuyos atributos estan separados por punto y coma, luego cargar el array de producto con los objetos creados a partir de los datos del archivo 
-//2agregar un cuadro de texto con el nombre del archivo en donde se van a guardar los datos 
-//En ese nombre se guardaran los datos cargados en los cuadros de texto. Si el archivo existe primero moveremos el archivo ya existente a la carpeta backup cambiandole el nombre al nombre que tiene mas la fecha.
+//1En la clase container crear el metodo leer de archivo,
+// que lea de un archivo un listado de producto cuyos atributos
+// estan separados por punto y coma, luego cargar el array de
+// producto con los objetos creados a partir de los datos del
+// archivo 
+//2agregar un cuadro de texto con el nombre del archivo en 
+//donde se van a guardar los datos 
+//En ese nombre se guardaran los datos cargados en los cuadros
+// de texto. Si el archivo existe primero moveremos el archivo
+// ya existente a la carpeta backup cambiandole el nombre al
+// nombre que tiene mas la fecha.
 //3al leer si el archivo no existe informarlo.     
 ?>
