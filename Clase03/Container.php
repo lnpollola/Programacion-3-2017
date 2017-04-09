@@ -32,7 +32,9 @@ class Container
 
     function LeerDeArchivo ()
     {
-        $archivo = fopen("productosconhtml.txt","r");
+        $texto = $_POST["archivo"];
+        
+        $archivo = fopen($texto.".txt","r");
         
                     while(!feof($archivo))
                     {

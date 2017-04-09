@@ -53,6 +53,9 @@ if(isset($_POST["guardar"]))
 
             fwrite($archivo,$prod->ToString());
             fclose($archivo);
+            
+            echo "El archivo se creo existosamente";
+            
             }
             else
                 {
@@ -60,13 +63,15 @@ if(isset($_POST["guardar"]))
                        
 
 
-                       mkdir("Backup".$date,0777);
-                       copy($texto.".txt","Backup".$date."/".$texto.".txt");
-                        //$archivo = fopen("Backup".$date".txt","w");
+                        mkdir("Backup".$date,0777);
+                        copy($texto.".txt","Backup".$date."/".$texto.".txt");
+                        
+                        $archivo = fopen($texto.".txt","a");
+                        
+                        fwrite($archivo,$prod->ToString());
+                        fclose($archivo);
 
-                       //fwrite($archivo,$prod->ToString());
-                      //  fclose($archivo);
-
+                        echo "Se agrego el producto al archivo ".$texto.".txt";
                 }
 
     }
@@ -79,8 +84,7 @@ if(isset($_POST["guardar"]))
 
             foreach($container->producto as $key)
             {
-            echo $key->ToString()."\n";
-
+            echo $key->ToString();
             }     
             
                    // $archivo = fopen("productosconhtml.txt","r");

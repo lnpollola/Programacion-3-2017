@@ -1,0 +1,3 @@
+Damian;Vogel;700
+Ale;trolo;5
+Sofi;Chancho;656565
