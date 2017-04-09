@@ -51,7 +51,7 @@ if(isset($_POST["guardar"]))
             {
             $archivo = fopen($texto.".txt","w");
 
-            fwrite($archivo,$prod->ToString());
+            fwrite($archivo,$prod->ToString()."\n");
             fclose($archivo);
             
             echo "El archivo se creo existosamente";
@@ -68,7 +68,7 @@ if(isset($_POST["guardar"]))
                         
                         $archivo = fopen($texto.".txt","a");
                         
-                        fwrite($archivo,$prod->ToString());
+                        fwrite($archivo,$prod->ToString()."\n");
                         fclose($archivo);
 
                         echo "Se agrego el producto al archivo ".$texto.".txt";
@@ -85,6 +85,7 @@ if(isset($_POST["guardar"]))
             foreach($container->producto as $key)
             {
             echo $key->ToString();
+            echo "<Br>";
             }     
             
                    // $archivo = fopen("productosconhtml.txt","r");

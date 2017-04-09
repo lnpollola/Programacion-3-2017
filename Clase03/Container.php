@@ -40,16 +40,11 @@ class Container
                     {
                         $renglon = fgets($archivo,4096);
 
-                        //$fitrado = trim($renglon);
-                        
                         $nuevoArray = explode(";",$renglon);
-                            // var_dump($nuevoArray);
-
-                        $nuevoProd = new Producto($nuevoArray[0],$nuevoArray[1],$nuevoArray[2]);
-                            //var_dump($nuevoProd);
-
-                        $this->AgregarProducto($nuevoProd);
-                            //var_dump($this->producto);
+                        if(!$nuevoArray[0]=="")
+                        {
+                        $this->AgregarProducto(new Producto($nuevoArray[0],$nuevoArray[1],$nuevoArray[2]));
+                        }  
                     }
                         
             fclose($archivo);
