@@ -62,7 +62,12 @@ class Fabrica
 		$this->_empleados = $array;
 	}
 
+	function GetterEmpleados()
+	{
+		return $this->_empleados;
 
+
+	}
 
 }
 
