@@ -6,12 +6,15 @@ Class Empleado Extends Persona{
 
 	protected $_legajo;
 	protected $_sueldo;
+	protected $_pathFoto;
 
-	public function __construct ($nombre, $apellido, $dni, $sexo, $legajo, $sueldo)
+	public function __construct ($nombre, $apellido, $dni, $sexo, $legajo, $sueldo, $pathRuta)
 	{
 		parent::__construct($nombre,$apellido,$dni,$sexo);
 		$this->_legajo = $legajo;
 		$this->_sueldo = $sueldo;
+		$this->_pathFoto = $pathFoto;
+
 	}
 
 	function getLegajo(){
@@ -26,6 +29,16 @@ Class Empleado Extends Persona{
 	function Hablar(string $idioma)
 	{
 		echo "El empleado habla ".$idioma;
+	}
+
+	function getPathFoto()
+	{
+		return $this->_pathFoto;
+	}
+
+	function setPathFoto($path)
+	{
+		$this->_pathFoto = $path;
 	}
 
 	 function ToString()
