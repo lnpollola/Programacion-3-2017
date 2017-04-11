@@ -3,9 +3,12 @@ include "Fabrica.php";
 
 if(isset($_POST["guardar"]))
 {
-    $empleado =  new Empleado($_POST["nombre"],$_POST["apellido"],$_POST["dni"],$_POST["sexo"],$_POST["legajo"],$_POST["sueldo"]);
+    $empleado =  new Empleado($_POST["nombre"],$_POST["apellido"],$_POST["dni"],$_POST["sexo"],$_POST["legajo"],$_POST["sueldo"],$_POST["archivo"]);
 
     $path = "empleados.txt";
+    
+    $extension = pathinfo($_POST["archivo"],PATHINFO_EXTENSION);
+    echo $extension;
 
 
     if(isset($_POST["nombre"],$_POST["apellido"],$_POST["dni"],$_POST["sexo"],$_POST["legajo"],$_POST["sueldo"]))

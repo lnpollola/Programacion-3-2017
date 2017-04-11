@@ -13,7 +13,7 @@ Class Empleado Extends Persona{
 		parent::__construct($nombre,$apellido,$dni,$sexo);
 		$this->_legajo = $legajo;
 		$this->_sueldo = $sueldo;
-		$this->_pathFoto = $pathFoto;
+		$this->_pathFoto = $pathRuta;
 
 	}
 
