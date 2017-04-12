@@ -1,7 +1,7 @@
 <?php
 
 //var_dump($_POST);
-var_dump($_FILES);
+//var_dump($_FILES);
 mkdir("fotos",0777);
 
 $nameTmp = $_FILES["archivo"]["name"];
@@ -17,6 +17,8 @@ $nombre = $_POST["nombre"];
 if(!file_exists("fotos"."/".$nombre.".".$name[1]))
 {
     copy($archivoTmp,"fotos"."/".$nombre.".".$name[1]);
+    echo "Se subio el archivo exitosamente";
+    
 }
     else
         {
@@ -24,7 +26,8 @@ if(!file_exists("fotos"."/".$nombre.".".$name[1]))
             $date = date('dmy');
 
             copy("fotos"."/".$nombre.".".$name[1],"backup"."/".$nombre.$date.".".$name[1]);
-
+            echo "El archivo ya existia. Se realizo un backup del archivo";
+            
         }
 
 
