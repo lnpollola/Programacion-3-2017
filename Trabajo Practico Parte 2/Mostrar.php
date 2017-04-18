@@ -4,7 +4,6 @@ include "Administracion.php";
 
 $fabrica = new Fabrica("Grupo RVA");
 
-echo "toy aca";
 $archivo = fopen("empleados.txt","r");
         
     while(!feof($archivo))
@@ -19,7 +18,7 @@ $archivo = fopen("empleados.txt","r");
 
                     if(!$nuevoArray[0]=="" && !$nuevoArray[1]=="")
                         {
-                            $fabrica->AgregarEmpleado(new Empleado($nuevoArray[0],$nuevoArray[1],$nuevoArray[2],$nuevoArray[3],$nuevoArray[4],$nuevoArray[5]));
+                            $fabrica->AgregarEmpleado(new Empleado($nuevoArray[0],$nuevoArray[1],$nuevoArray[2],$nuevoArray[3],$nuevoArray[4],$nuevoArray[5],$nuevoArray[6]));
                             
                         }  
                     
@@ -33,8 +32,7 @@ $archivo = fopen("empleados.txt","r");
                     echo "<Br>";
                 }
 
-echo "toy aca 2";
-var_dump($_FILES);
+
 
 
 

@@ -43,8 +43,8 @@ Class Empleado Extends Persona{
 
 	 function ToString()
 	{ 	
-		return Parent::ToString().";".$this->getLegajo().";".$this->getSueldo();
-
+		return Parent::ToString().";".$this->getLegajo().";".$this->getSueldo().";".$this->getPathFoto();
+		//echo "<img source= "	
 	 }
 
 
