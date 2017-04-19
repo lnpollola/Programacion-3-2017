@@ -1,0 +1,11 @@
+INSERT INTO `tablauno`(`descripcion`, `codigo`, `precio`) VALUES ("producto1",333,10)      --> agregar
+
+
+
+Agregar muchos productos separandolos por ","
+INSERT INTO `tablauno`(`descripcion`, `codigo`, `precio`) VALUES ("producto1",333,10),("producto2",444,20),("producto3",555,25)
+
+
+
+
+SELECT U.nombre as user, L.descripcion as localidad FROM usuario As U, localidad As L WHERE U.id_loc = L.id
