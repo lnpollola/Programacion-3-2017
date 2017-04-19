@@ -22,5 +22,7 @@ mysqli_close($conexion);
 
 //Hacer ABM en 
 
+//falta agregar los envios!
+
 
 ?>
