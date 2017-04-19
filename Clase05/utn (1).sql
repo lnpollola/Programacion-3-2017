@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-04-2017 a las 03:06:54
+-- Tiempo de generación: 19-04-2017 a las 03:11:24
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 5.6.28
 
@@ -44,6 +44,15 @@ CREATE TABLE `productos` (
   `Precio` float NOT NULL,
   `Tamaño` varchar(20) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`pNumero`, `pNombre`, `Precio`, `Tamaño`) VALUES
+(1, 'Caramelos', 1.5, 'Chico'),
+(2, 'Cigarrillos', 45.89, 'Mediano'),
+(3, 'Gaseosa', 15.8, 'Grande');
 
 -- --------------------------------------------------------
 
@@ -98,7 +107,7 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `pNumero` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pNumero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
