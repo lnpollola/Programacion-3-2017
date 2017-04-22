@@ -39,53 +39,55 @@ echo "El acum tiene un valor de ".$acum;
 if($acum == 3)
 {
 
-if(isset($_POST["guardar"]))
-{
-    $empleado =  new Empleado($_POST["nombre"],$_POST["apellido"],$_POST["dni"],$_POST["sexo"],$_POST["legajo"],$_POST["sueldo"],$_FILES["archivo"]["name"]);
-
-    $path = "empleados.txt";
-    
-
-   // Para saber la extension
-
-   // $extension = pathinfo($_POST["archivo"],PATHINFO_EXTENSION);
-   // echo $extension;
-
-
-    if(isset($_POST["nombre"],$_POST["apellido"],$_POST["dni"],$_POST["sexo"],$_POST["legajo"],$_POST["sueldo"]))
+    if(isset($_POST["guardar"]))
     {
+        $empleado =  new Empleado($_POST["nombre"],$_POST["apellido"],$_POST["dni"],$_POST["sexo"],$_POST["legajo"],$_POST["sueldo"],$_FILES["archivo"]["name"]);
 
-                if(file_exists($path))
-                {
-                    $archivo = fopen($path,"a");
-                    fwrite($archivo,$empleado->ToString()."\r\n");
-                    fclose($archivo);
-                    echo '<a href="Mostrar.php">Se creo correctamente </a>'; 
-                    
-                }
-                    else
+        $path = "empleados.txt";
+        
+
+    // Para saber la extension
+
+    // $extension = pathinfo($_POST["archivo"],PATHINFO_EXTENSION);
+    // echo $extension;
+
+
+        if(isset($_POST["nombre"],$_POST["apellido"],$_POST["dni"],$_POST["sexo"],$_POST["legajo"],$_POST["sueldo"]))
+        {
+
+                    if(file_exists($path))
                     {
-                        $archivo = fopen($path,"w");
+                        $archivo = fopen($path,"a");
                         fwrite($archivo,$empleado->ToString()."\r\n");
                         fclose($archivo);
+                        echo '<a href="Mostrar.php">Se creo correctamente </a>'; 
+                        
                     }
-    }   
-    else{
-            
-            echo '<a href="index.html">"No se pudo guardar el empleado." </a>';
+                        else
+                        {
+                            $archivo = fopen($path,"w");
+                            fwrite($archivo,$empleado->ToString()."\r\n");
+                            fclose($archivo);
+                        }
+        }   
+        else{
+                
+                echo '<a href="index.html">"No se pudo guardar el empleado." </a>';
 
 
 
 
-        }
+            }
 
+
+    }
 
 }
+    else
+    {
+        Echo "No se instancio el empleado "
 
-
-
-}
-
+    }
 
 
 
