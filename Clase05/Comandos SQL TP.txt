@@ -1,0 +1,5 @@
+1- SELECT * FROM `productos` ORDER BY pNombre ASC
+
+2- SELECT * FROM `proveedores` WHERE proveedores.Localidad = 'Quilmes'
+
+3-  
