@@ -29,7 +29,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `envios` (
   `Numero` int(11) NOT NULL,
   `pNumero` int(11) NOT NULL,
-  `Cantidad` int(11) NOT NULL
+  `Cantidad` int(11) NOT NULL,
+   
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
