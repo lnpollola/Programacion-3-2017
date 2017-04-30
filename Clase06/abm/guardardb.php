@@ -8,7 +8,7 @@ if(isset($_POST["guardar"]))
     $obj = AccesoDatos::DameUnObjetoAcceso();
   
 
-     $consulta =$obj->RetornarConsulta("INSERT INTO producto (codigo_barra,nombre , path_foto)"
+        $consulta =$obj->RetornarConsulta("INSERT INTO producto (codigo_barra,nombre , path_foto)"
                                                     . "VALUES(:codigo, :nombre, :pathRuta)");
         
         $consulta->bindValue(':codigo', $_POST["codBarra"], PDO::PARAM_INT);
@@ -17,7 +17,14 @@ if(isset($_POST["guardar"]))
 
         $consulta->execute();   
         
-       
+
+        $name = $_FILES["archivo"]["name"];
+
+
+        $archivoTmp = $_FILES["archivo"]["tmp_name"];
+
+        copy($archivoTmp,"archivos"."/".$name);
+              
         echo "<a href=index.html>Volver</a> ";
 
 
