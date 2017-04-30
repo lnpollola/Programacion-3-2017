@@ -46,7 +46,8 @@ echo "<table class='table'>
 					<td>".$prod->GetNombre()."</td>
 						
 					<td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
-					<td><input type="."submit"." class="."MiBotonUTN"." value="."Borrar"." name=".$prod->GetCodBarra()." /></td>
+					<td><input type="."submit"." class="."MiBotonUTN"." value="."Borrar".
+					" name=".$prod->GetCodBarra()." /></td>
 				
 				</tr>";
 	}	
