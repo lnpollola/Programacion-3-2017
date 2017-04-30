@@ -24,8 +24,8 @@
 				<input type="text" name="codBarra" placeholder="Ingrese c&oacute;digo de barras"  />
 			
 				<input type="submit" class="MiBotonUTN" name="borrar" />
-			</form>
-
+			
+</form>	
             <?php 
 
 $ArrayDeProductos = Producto::TraerTodosLosProductosBD(); //MODIFIQUE ESTE POR BD AGREGADO AL FINAL LLAMANDO AL NUEVO METODO
@@ -44,7 +44,10 @@ echo "<table class='table'>
 		echo " 	<tr>
 					<td>".$prod->GetCodBarra()."</td>
 					<td>".$prod->GetNombre()."</td>
+						
 					<td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
+					<td><input type="."submit"." class="."MiBotonUTN"." value="."Borrar"." name=".$prod->GetCodBarra()." /></td>
+				
 				</tr>";
 	}	
 echo "</table>";		
