@@ -1,0 +1,25 @@
+//CLASE 6 PDO
+
+PDO 
+
+> CONEXION A FUENTE DE DATOS que sigue trabajando igual a pesar de que cambie la misma. Es la forma de estandarizar la conexiòn
+a la base de datos y poder utilizarla.
+
+> Objeto configurable
+> 1 sola conexion en toda la aplicacion mientras dure la ejecucion
+> Permite obtener directamente un objeto desde la BD 
+
+>Necesito varias cosas para configurar
+    Servidor
+        Usuario y Password / Base de datos y tablas 
+
+> 
+    1- Ejecutar el .sql de CD de Clase06
+    2- Ejecutar el .sql de productos en abm
+
+AccesoDatos es la conexion a la base de datos
+En el constructor tengo que tener la instanciacion
+Ejemplo 6 y 7 de la clase 06 me da el objeto
+(PARCIAL) ALTA; LISTAR; BORRAR; MODIFICAR ; GUARDADO EN ARCHIVO Y BD
+Los archivos de administracion actuan como nexo entre el HTML y las clases que guardan/borran/trae datos 
+que tambien pasan por el AccesoDatos y de ahi hasta la BD
