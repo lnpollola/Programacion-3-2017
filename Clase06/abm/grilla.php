@@ -36,11 +36,26 @@ echo "<table class='table'>
 
 	foreach ($ArrayDeProductos as $prod){
 
-		echo " 	<tr>
+				echo " 	<tr>
 					<td>".$prod->GetCodBarra()."</td>
 					<td>".$prod->GetNombre()."</td>
+					
 					<td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
+					<td>
+								<form method=post name=bajadeprod action= bajaymod.php>
+                                <input type=submit name=borrar1 class=MiBotonUTN value=borrar />
+                                <input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
+								</form>
+
+								<form method=post name=moddeprod action= bajaymod.php>
+                                <input type=submit name=modificar class=MiBotonUTN value=modificar />
+                                <input type=hidden name=modCodBarra value=".$prod->GetCodBarra()." />
+								</form>
+
+
+					</td>
 				</tr>";
+
 	}	
 echo "</table>";		
 ?>
