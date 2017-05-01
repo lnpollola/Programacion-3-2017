@@ -38,9 +38,10 @@ if(isset($_POST["borrar"]))
 
 
 }
-echo var_dump($_POST);
 
-if(isset($_POST["borrar"]))
+
+
+if(isset($_POST["borrar1"]))
 {
     try{
         $obj = AccesoDatos::DameUnObjetoAcceso();
@@ -61,7 +62,8 @@ if(isset($_POST["borrar"]))
                  }
                     else 
                     {
-                        echo "Se eliminaron ". $consulta->rowCount() . "filas";
+                        echo '<script type="text/javascript">alert("Se elimino 1 articulo");</script>';
+
                     }
 
                 require_once "baja.php";

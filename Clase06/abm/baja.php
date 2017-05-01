@@ -44,11 +44,16 @@ echo "<table class='table'>
 		echo " 	<tr>
 					<td>".$prod->GetCodBarra()."</td>
 					<td>".$prod->GetNombre()."</td>
-						
+					
 					<td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
-					<td><input type="."submit"." class="."MiBotonUTN"." value="."Borrar".
-					" name=".$prod->GetCodBarra()." /></td>
-				
+					<td>
+								<form method=post name=bajadeprod action= bajadb.php>
+                                <input type=submit name=borrar1 class=MiBotonUTN value=borrar />
+                                <input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
+								</form>
+
+
+					</td>
 				</tr>";
 	}	
 echo "</table>";		
