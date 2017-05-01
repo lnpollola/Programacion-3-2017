@@ -42,12 +42,12 @@ echo "<table class='table'>
 					
 					<td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
 					<td>
-								<form method=post name=bajadeprod action= bajaymod.php>
-                                <input type=submit name=borrar1 class=MiBotonUTN value=borrar />
+								<form method=post name=bajadeprod action=administracion.php>
+                                <input type=submit name=borrar class=MiBotonUTN value=borrar />
                                 <input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
 								</form>
 
-								<form method=post name=moddeprod action= bajaymod.php>
+								<form method=post name=moddeprod action= administracion.php>
                                 <input type=submit name=modificar class=MiBotonUTN value=modificar />
                                 <input type=hidden name=modCodBarra value=".$prod->GetCodBarra()." />
 								</form>
