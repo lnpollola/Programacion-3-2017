@@ -1,0 +1,24 @@
+USUARIO
+-------
+
+ID
+MAIL
+CLAVE
+ESTADO
+
+
+Metodos:
+
+Get --> Traer Todos
+    --> Traer uno 'id'
+
+Post --> Alta
+
+Delete --> Baja
+
+Put --> Modificacion (clave, estado)
+
+Patch --> Cambiar Estado --> 'habilitado'
+                         --> 'bloqueado'
+
+Post --> Validar usuario    
