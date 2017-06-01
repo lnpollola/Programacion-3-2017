@@ -1,0 +1,29 @@
+-Se utiliza api.php para que se comunique con archivos php y charle con otro host
+(api rest)
+Ejemplo: https://restcountries.eu/rest/v1/all
+
+
+-Para instalar slim framwork
+https://www.slimframework.com/docs/start/installation.html
+
+-postman
+extencion del chrome
+https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop
+o 
+vamos a la pagina de la app
+https://app.getpostman.com
+
+
+-se utiliza bower para bajar codigo de github. el parecido compouser
+https://getcomposer.org/doc/00-intro.md
+
+Pagina para crear datos ramdom:
+http://www.mockaroo.com/
+
+Como instalar composer
+bajamos y lo instalamos. 
+Creamos una carpeta en htdocs
+click derecho + shift abrir comandos y despues copiar
+composer require slim/slim "^3.0"
+
+ver json

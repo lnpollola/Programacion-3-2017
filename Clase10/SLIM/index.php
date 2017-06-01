@@ -9,10 +9,12 @@ use \Psr\Http\Message\ResponseInterface as Response;
 $app = new \Slim\App;
 
 
-$app->get('/trolo', function (Request $request, Response $response) {
+$app->get('/trolo/{name}', function (Request $request, Response $response) {
 
-   
-    $response->write("Hello trolo");
+    $name = $request->getAttribute('name');
+
+
+    $response->write("Hello trolo".$name);
 
     return $response;
 });
