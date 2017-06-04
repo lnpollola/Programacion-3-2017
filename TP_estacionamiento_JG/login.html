@@ -81,20 +81,20 @@
             <label>
               Usuario<span class="req">*</span>
             </label>
-            <input type="text"required autocomplete="on"/>
+            <input type="text"required name="usuario" id="usuarioid" autocomplete="on"/>
           </div>
           
           <div class="field-wrap">
             <label>
               Password<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off"/>
+            <input type="text"required name="password" id="passwordid" autocomplete="off"/>
           </div>
           
           <!--ACA ESTA PARA EL LINK A OLVIDE LA CONTRASEÑA, VER SI LO VAMOS A USAR-->
           <!--<p class="forgot"><a href="#">Forgot Password?</a></p>-->
           
-          <button class="button button-block"/>Ingresar</button>
+          <button class="button button-block"  onclick="ValidarUsuario()" value="" />Ingresar</button>
 
           <br><br>
           <p style="color:aliceblue">Hasta que hagamos la validacion de usuario entramos por aca</p>
@@ -112,6 +112,8 @@
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
     <script src="js/index.js"></script>
+    <script src="js/funciones.js"></script>
+    
 
 </body>
 </html>
