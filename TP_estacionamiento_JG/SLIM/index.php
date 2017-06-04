@@ -52,15 +52,20 @@ $app->patch('/cambiarestado', function ($request, $response) {
 });
 $app->post('/validarusuario', function ($request, $response) {
     
-    $body = $response->getBody();
+    //$body = $response->getBody();
     
-    $obj = isset($_POST['usuario']) ? json_decode(json_encode($_POST['usuario'])) : NULL;
+    //$obj = isset($_POST['usuario']) ? json_decode(json_encode($_POST['usuario'])) : NULL;
    
-    //var_dump($obj);
+     $usuarios = Usuario::TraerTodosLosusuarios();
+     
+   //  $app->redirect('http://localhost/Programacion-3-2017/TP_estacionamiento_JG/SLIM/prueba.php', 301);
 
-    $body->write('Hello');
+    //return  json_encode($usuarios);
 
-   // return $response->withJson($obj);
+     return $response->withJson($usuarios);
+
+   
+    //return $response->withJson($obj);
 });
 // $app->get('/funciones/[{id}]', function ($request, $response, $args) {
 //          $sth = $this->db->prepare("SELECT * FROM tasks WHERE id=:id");
@@ -72,3 +77,4 @@ $app->post('/validarusuario', function ($request, $response) {
 // Run app
 $app->run();
 ?>
+

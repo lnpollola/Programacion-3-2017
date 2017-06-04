@@ -19,22 +19,18 @@ function ValidarUsuario()
         url: pagina,
         dataType: "json",
         data: {
-			
 			usuario : usuario
 		},
-        async: true
-    })
-	.done(function () {
+		success: function(data, textStatus, jqXHR){
+			alert(data);
 		
-		alert("volvio bien");
-
-		
-	})
-
-	.fail(function (jqXHR, textStatus, errorThrown) {
-        alert(jqXHR.responseText + "\n" + textStatus + "\n" + errorThrown);
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert(jqXHR.responseText + "\n" + textStatus + "\n" + errorThrown);
+		}
+      //  async: true
     });
-
+	
 
 }
 
