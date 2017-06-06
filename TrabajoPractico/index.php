@@ -1,38 +1,63 @@
 <?php
-require 'vendor/autoload.php';
-require 'clases/usuario.php';
+
+require __DIR__.'/vendor/autoload.php';
+require __DIR__.'/clases/usuario.php';
+require __DIR__.'/clases/AccesoDatos.php';
+
 $app = new \Slim\App;
-$app->get('/traertodosusuarios', function ($request, $response) {
+    
+//USUARIO
+$app->get('/traertodosUsuarios', function ($request, $response) {
     $usuarios = Usuario::TraerTodosLosusuarios();
     return $response->withJson($usuarios);
 });
-$app->get('/validarusuario', function ($request, $response) {
-         
-          $obj = isset($_GET['usuario']) ? json_decode(json_encode($_GET['usuario'])) : NULL;
-        
-          $rta = Usuario::ValidarUsuario($obj->usuarioid,$obj->passwordid);
-          return $response->withJson($rta);
-        });
 
 $app->get('/traerunusuario/[{id}]', function ($request, $response, $args) {
           $uno = Usuario::TraerUnUsuario($args['id']);
           return $response->withJson($uno);
         });
 
-$app->post('/alta', function ($request, $response) {
-    require_once("funciones/altaenBD.php");
-    // return $response->write("alta.");
-});
-$app->delete('/baja', function ($request, $response) {
-    return $response->write("delete.");
-});
-$app->put('/modificacion', function ($request, $response) {
-    return $response->write("modificacion.");
-});
-$app->patch('/cambiarestado', function ($request, $response) {
-    return $response->write("cambiarestado.");
-});
-$app->post('/validarusuario2', function ($request, $response) {
-    return $response->write("validarusuario.");
-});
+$app->get('/validarusuario', function ($request, $response) {
+         
+          $obj = isset($_GET['usuario']) ? json_decode(json_encode($_GET['usuario'])) : NULL;
+          $rta = Usuario::ValidarUsuario($obj->usuarioid,$obj->passwordid);
+         // var_dump($rta);
+          return $response->withJson($rta);
+        });
+      
+$app->get('/tipoempleado', function ($request, $response) {
+         
+         
+          $obj = isset($_GET['usuarioTipo']) ? json_decode(json_encode($_GET['usuarioTipo'])) : NULL;
+          $rta = Usuario::ValidarTipoEmp($obj->usuarionombre);
+          return $response->withJson($rta);
+        });
+
+$app->get('/tipoempleado/[{id}]', function ($request, $response, $args) {
+         
+          $nombre = $args["id"];
+          $rta = Usuario::ValidarTipoEmp($obj->usuarionombre);
+          return $response->withJson($rta);
+        });
+
+$app->post('/ingresarvehiculo/[{id}]', function ($request, $response, $args) {
+
+             $patente = $args["id"];
+             //$obj = isset($_POST['patente']) ? json_decode(json_encode($_POST['patente'])) : NULL;
+             $objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
+		    // echo $obj;
+             $consulta = $objetoAcceso->RetornarConsulta('INSERT INTO `vehiculos`(`Patente`) VALUES (:patente)');
+		     $consulta->bindParam("patente", $patente);
+		     $consulta->Execute();
+
+             //$consulta->Execute();
+             
+          
+          //$rta = Usuario::ValidarTipoEmp($obj->usuarionombre);
+           // return $response->withJson($obj);
+        });
+
+
 $app->run();
+
+?>
