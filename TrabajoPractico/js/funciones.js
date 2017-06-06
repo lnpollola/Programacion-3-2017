@@ -86,16 +86,17 @@ function ValidarUsuario()
 
 function IngresarVehiculo()
 {
-    var paginaValid = "http://localhost/Programacion-3-2017/TrabajoPractico/index.php/ingresarvehiculo";
-
+    var paginaValid = "http://localhost/Programacion-3-2017/TrabajoPractico/index.php/ingresarvehiculo/";
+	
 	var patente = $("#patenteid").val();
-		
+
+	var paginaFinal = paginaValid.concat(patente);	
 	//alert(patente);
    
   //PRIMER AJAX ENCAPSULA USUARIO
   $.ajax({
         type: 'POST',
-        url: paginaValid,
+        url: paginaFinal,
         dataType: "json",
         data: {
 			patente : patente
