@@ -1,40 +1,39 @@
 <?php
-
-require_once "AccesoDatos.php";
+//Incluimos la clase AccesoDatos.php que no estaba. La copiamos desde la Carpeta Clases de Clase06
+//require __DIR__."/clases/AccesoDatos.php";
 class Piso
 {
 //--------------------------------------------------------------------------------//
 //--ATRIBUTOS
-	private $ID_PISO;
-    private $HABILITADO;
-//--------------------------------------------------------------------------------//
-
+	private $id_piso;
+	private $habilitado;
 //--------------------------------------------------------------------------------//
 //--GETTERS Y SETTERS
-	public function GetId_Piso()
+	public function GetIdPiso()
 	{
-		return $this->ID_PISO;
+		return $this->NroCochera;
 	}
 	public function GetHabilitado()
 	{
-		return $this->HABILITADO;
+		return $this->Tipo;
 	}
-	
-	public function SetId_Piso($valor)
+
+	public function SetIdPiso($valor)
 	{
-		$this->ID_PISO = $valor;
+		$this->IdPiso = $valor;
 	}
 	public function SetHabilitado($valor)
 	{
-		$this->PATENTE = $valor;
+		$this->Habilitado = $valor;
 	}
+
 //--------------------------------------------------------------------------------//
 //--CONSTRUCTOR
-	public function __construct($ID_PISO=NULL, $HABILITADO=NULL)
+	public function __construct( $IdPiso=NULL, $Habilitado=NULL)
 	{
-		if($ID_PISO !== NULL && $HABILITADO !== NULL){
-			$this->ID_PISO = $ID_PISO;
-			$this->HABILITADO = $HABILITADO;
+		if($Habilitado !== NULL && $IdPiso !== NULL  ){
+			$this->IdPiso = $IdPiso;
+			$this->Habilitado = $Habilitado;
 		}
 	}
 
@@ -42,55 +41,56 @@ class Piso
 //--TOSTRING	
   	public function ToString()
 	{
-	  	return $this->ID_PISO." - ".$this->HABILITADO."\r\n";
+	  	return $this->IdPiso." - ".$this->Habilitado."\r\n";
 	}
 //--------------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------------//
 //--METODOS DE CLASE
-	
+
 	public static function Alta($obj)
 	{
 		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-		$consulta = $objetoAcceso->RetornarConsulta('INSERT INTO `pisos`(`HABILITADO`) VALUES (1)');
+		$consulta = $objetoAcceso->RetornarConsulta('INSERT INTO `pisos`(`habilitado`) VALUES (1)');
 		$consulta->Execute();
 	}
 
 	public static function Baja($aux)
 	{
 		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-		$consulta = $objetoAcceso->RetornarConsulta('UPDATE `pisos` SET `HABILITADO`=[0] WHERE ID_PISO=:id_piso');
-		$consulta->bindvalue(':id_piso',$aux, PDO::PARAM_INT);
+		$consulta = $objetoAcceso->RetornarConsulta('UPDATE `pisos` SET `habilitado`=0 WHERE `id_piso`=:idpiso ');
+		$consulta->bindvalue(':idpiso', $aux , PDO::PARAM_INT);
 		$consulta->Execute();
 	}
 
 	public static function TraerTodosLosPisos()
 	{
-		
 		$arrayRetorno = array();
+		//Este Metodo esta creado por nosotros este.
 		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-		$consulta = $objetoAcceso->RetornarConsulta('SELECT ID_PISO, HABILITADO FROM `pisos`');
+		$consulta = $objetoAcceso->RetornarConsulta('SELECT id_piso, habilitado  FROM `pisos`');
 		$consulta->Execute();
-		 while ($fila = $consulta->fetchObject("Piso"))
-		 {
+		while ($fila = $consulta->fetchObject("Piso"))
+		{
 			 array_push($arrayRetorno,$fila);
 		 }
 		 
 		 return $arrayRetorno;
 	}
-	public static function TraerUnPiso($aux)
-	{
-		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-        $consulta = $objetoAcceso->RetornarConsulta('SELECT ID_PISO, HABILITADO FROM pisos WHERE ID_PISO=:id_pisos');
-        $consulta->bindParam("id_pisos", $aux);
+
+	public static function TraerUnaPiso($aux)
+    {
+        $objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
+        $consulta = $objetoAcceso->RetornarConsulta('SELECT id_piso, habilitado FROM pisos WHERE id_piso=:idpiso');
+        $consulta->bindParam("idpiso", $aux);
         $consulta->execute();
         $uno = $consulta->fetchAll();
          if($uno == NULL)
           {
-              $uno="No existe";
+              $uno="no existe";
               return $uno;
           }
         return $uno;
-	}
+    }
 //--------------------------------------------------------------------------------//
 }
