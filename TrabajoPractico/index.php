@@ -1,6 +1,6 @@
 <?php
-require '/vendor/autoload.php';
-require '/clases/usuario.php';
+require 'vendor/autoload.php';
+require 'clases/usuario.php';
 $app = new \Slim\App;
 $app->get('/traertodosusuarios', function ($request, $response) {
     $usuarios = Usuario::TraerTodosLosusuarios();
