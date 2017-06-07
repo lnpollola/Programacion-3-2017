@@ -6,6 +6,7 @@ class Usuario
 {
 //--------------------------------------------------------------------------------//
 //--ATRIBUTOS
+	private $id_usuario;
 	private $Nombre;
  	private $Turno;
   	private $Password;
@@ -13,6 +14,11 @@ class Usuario
 	private $Estado;
 //--------------------------------------------------------------------------------//
 //--GETTERS Y SETTERS
+	public function GetId()
+	{
+		return $this->id_usuario;
+	}
+		
 	public function GetNombre()
 	{
 		return $this->Nombre;
@@ -59,9 +65,10 @@ class Usuario
 
 //--------------------------------------------------------------------------------//
 //--CONSTRUCTOR
-	public function __construct( $Nombre=NULL, $Turno=NULL, $Password=NULL, $Tipo=NULL, $Estado=NULL)
+	public function __construct( $id_usuario=NULL, $Nombre=NULL, $Turno=NULL, $Password=NULL, $Tipo=NULL, $Estado=NULL)
 	{
-		if($Nombre !== NULL && $Turno !== NULL && $Password !== NULL && $Tipo !== NULL && $Estado !== NULL ){
+		if($id_usuario!== NULL && $Nombre !== NULL && $Turno !== NULL && $Password !== NULL && $Tipo !== NULL && $Estado !== NULL ){
+			$this->id_usuario = $id_usuario;
 			$this->Nombre = $Nombre;
 			$this->Turno = $Turno;
 			$this->Password = $Password;
@@ -74,7 +81,7 @@ class Usuario
 //--TOSTRING	
   	public function ToString()
 	{
-	  	return $this->Nombre." - ".$this->Turno." - ".$this->Password."\r\n";
+	  	return $this->id_usuario." - ".$this->Nombre." - ".$this->Turno." - ".$this->Password."\r\n";
 	}
 //--------------------------------------------------------------------------------//
 
@@ -84,8 +91,9 @@ class Usuario
 	//ABM
 	public static function Alta($obj)
 	{
+		//CORREGIR ESTO
 		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-		$consulta = $objetoAcceso->RetornarConsulta('INSERT INTO `usuarios`(`nombre`, `Turno`, `Password`, `Tipo`,`Estado`) VALUES ($obj[0],$obj[1],$obj[2],$obj[3],$obj[4])');
+		//$consulta = $objetoAcceso->RetornarConsulta('INSERT INTO `usuarios`(`nombre`, `Turno`, `Password`, `Tipo`,`Estado`) VALUES ($obj[0],$obj[1],$obj[2],$obj[3],$obj[4])');
 		$consulta->Execute();
 	}
 	public static function Baja($aux)
@@ -142,21 +150,25 @@ class Usuario
 	{
         
          	$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-            $consulta = $objetoAcceso->RetornarConsulta('SELECT nombre FROM usuarios WHERE nombre=:nombre');
+            $consulta = $objetoAcceso->RetornarConsulta('SELECT ID_EMPLEADO, NOMBRE, TURNO, PASSWORD,TIPO, ESTADO FROM usuarios WHERE nombre=:nombre');
             $consulta->bindParam("nombre",$nombre);
-        
             $consulta->execute();    
-            $uno= $consulta->fetchAll();
+			$usuarioBase= $consulta->fetchObject("Usuario");
+			
+			//$usuario = new Usuario($usuarioBase->,$usuarioBase[1],$usuarioBase[2],$usuarioBase[3],$usuarioBase[4],$usuarioBase[5]);
+		 
+			var_dump($usuario);
+		    //$uno= $consulta->fetchAll();
 			
 		  // var_dump($consulta);
-            if($uno == NULL)
+            if($usuarioBase->nombre == NULL)
             {
                 $rta= "El usuario no existe";
             }
             else if($uno == TRUE )
             {
                 $objetoAcceso2 = AccesoDatos::DameUnObjetoAcceso();
-                $consulta2 = $objetoAcceso2->RetornarConsulta('SELECT nombre, `password` FROM usuarios WHERE nombre=:nombre AND `password`=:pass');
+                $consulta2 = $objetoAcceso2->RetornarConsulta('SELECT  ID_EMPLEADO, NOMBRE, TURNO, PASSWORD,TIPO, ESTADO FROM usuarios WHERE nombre=:nombre AND `password`=:pass');
                 $consulta2->bindParam("nombre",$nombre);
                 $consulta2->bindParam("pass",$password);
                 $consulta2->execute();
