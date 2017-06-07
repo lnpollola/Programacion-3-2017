@@ -4,9 +4,20 @@ require __DIR__.'/vendor/autoload.php';
 require __DIR__.'/clases/usuario.php';
 require __DIR__.'/clases/AccesoDatos.php';
 
+
+
+use \Psr\Http\Message\UploadedFileInterface;
+
 $app = new \Slim\App;
-    
+
+
 //USUARIO
+
+
+
+
+
+
 $app->get('/traertodosUsuarios', function ($request, $response) {
     $usuarios = Usuario::TraerTodosLosusuarios();
     return $response->withJson($usuarios);
@@ -42,20 +53,30 @@ $app->get('/tipoempleado/[{id}]', function ($request, $response, $args) {
 
 $app->post('/ingresarvehiculo/[{id}]', function ($request, $response, $args) {
 
-             $patente = $args["id"];
-             //$obj = isset($_POST['patente']) ? json_decode(json_encode($_POST['patente'])) : NULL;
-             $objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-		    // echo $obj;
-             $consulta = $objetoAcceso->RetornarConsulta('INSERT INTO `vehiculos`(`Patente`) VALUES (:patente)');
-		     $consulta->bindParam("patente", $patente);
-		     $consulta->Execute();
-
-             //$consulta->Execute();
+                $patente = $args["id"];
              
-          
-          //$rta = Usuario::ValidarTipoEmp($obj->usuarionombre);
-           // return $response->withJson($obj);
+                $objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
+		    
+                $consulta = $objetoAcceso->RetornarConsulta('INSERT INTO `vehiculos`(`Patente`) VALUES (:patente)');
+	        $consulta->bindParam("patente", $patente);
+		$consulta->Execute();
+             
+                return $response->withJson($consulta->Execute());
         });
+
+$app->post('/archivo', function ($request, $response, $args) {
+
+               $files = $request->getUploadedFiles();
+            
+              // $files["archivo"]->moveTo(__DIR__."\koala.jpg");
+               
+              // var_dump($files["files"]);
+
+               
+             
+                //return $response->withJson();
+        });
+
 
 
 $app->run();
