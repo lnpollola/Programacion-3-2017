@@ -104,7 +104,7 @@ $app->post('/cd[/]', function (Request $request, Response $response) {
   
   	$destino="./fotos/";
   	$ArrayDeParametros = $request->getParsedBody();
-  	var_dump($ArrayDeParametros);
+  	//var_dump($ArrayDeParametros);
   	$titulo= $ArrayDeParametros['titulo'];
   	$cantante= $ArrayDeParametros['cantante'];
   	$año= $ArrayDeParametros['anio'];
@@ -113,7 +113,7 @@ $app->post('/cd[/]', function (Request $request, Response $response) {
   	$micd->titulo=$titulo;
   	$micd->cantante=$cantante;
   	$micd->año=$año;
-  	$micd->InsertarElCdParametros();
+  //	$micd->InsertarElCdParametros();
 
   	$archivos = $request->getUploadedFiles();
   	//var_dump($ArrayDeParametros);
@@ -127,9 +127,22 @@ $app->post('/cd[/]', function (Request $request, Response $response) {
 	$extension=array_reverse($extension);
 
   	$archivos['foto']->moveTo($destino.$titulo.".".$extension[0]);
-    $response->getBody()->write("cd");
+    
+	$path = $destino.$titulo.".".$extension[0];
 
-    return $response;
+	
+
+		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
+		$consulta = $objetoAcceso->RetornarConsulta('INSERT INTO `cds`(archivo,interpret,jahr,titel) VALUES (:archivo,:interpret,:jahr,:titel)');
+		$consulta->bindParam("archivo",$path);
+        $consulta->bindParam("interpret",$micd->cantante);
+		$consulta->bindParam("jahr",$micd->año);
+        $consulta->bindParam("titel",$micd->titulo);
+		
+		$consulta->Execute();
+
+	
+  //  return $response;
 
 });
 

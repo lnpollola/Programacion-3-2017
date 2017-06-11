@@ -49,6 +49,9 @@ function EditarCD(idParametro)
 function GuardarCD()
 {
 
+	//alert("estoy en ajax de guardarCD");
+	
+	
 	var inputFileImage = document.getElementById("foto");
 	var file = inputFileImage.files[0];
 	var datosDelForm = new FormData("formcd");
@@ -69,7 +72,7 @@ function GuardarCD()
 		
 
 	var funcionAjax=$.ajax({
-		url:"http://localhost:8080/EjemploAjax+APIREST/apirest/cd/",
+		url:"http://localhost/Programacion-3-2017/PracticaParcial/cd",
 		type:"post",
 		data:datosDelForm,
 		cache: false,
@@ -77,8 +80,18 @@ function GuardarCD()
     	processData: false
 
 	}).then(function(respuesta){
+		alert("Agregado correctamente");
+		
 		$("#informe").html("cantidad de agregados "+ respuesta);	
-		console.log("guardar cd");
+		
+		$("#cantante").val("");
+		$("#titulo").val("");
+		$("#anio").val("");
+		
+		
+		
+		
+		//console.log("guardar cd");
 
 	},function(error){
 

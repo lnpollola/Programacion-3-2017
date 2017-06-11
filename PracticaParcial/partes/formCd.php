@@ -10,7 +10,7 @@ if(isset($_SESSION['registrado'])){  ?>
         <h2 class="form-ingreso-heading">CD</h2>
         <label for="cantante" value="natalia" class="sr-only">Cantante</label>
         <input type="text"  minlength="6"  id="cantante" title="Se necesita un nombre de cantante" class="form-control" placeholder="Cantante" required="" autofocus="">
-        <label for="titulo" value="un tituñlo" class="sr-only">Titulo</label>
+        <label for="titulo" value="un titulo" class="sr-only">Titulo</label>
         <input type="text"  minlength="6"  id="titulo" title="Se necesita un titulo del disco"  class="form-control" placeholder="Titulo" required="" autofocus="">
         <label for="anio" class="sr-only">Año</label>
         <input type="number" value=2000  min="1900" title="Un año entre 1900 y hoy"  max="2099" id="anio" class="form-control" placeholder="año" required="" autofocus="">
