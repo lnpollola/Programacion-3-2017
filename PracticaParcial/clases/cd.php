@@ -10,10 +10,10 @@ class cd
   	public function BorrarCd()
 	 {
 	 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("
-				delete 
+			$consulta =$objetoAccesoDato->RetornarConsulta('
+				DELETE
 				from cds 				
-				WHERE id=:id");	
+				WHERE id=:id');	
 				$consulta->bindValue(':id',$this->id, PDO::PARAM_INT);		
 				$consulta->execute();
 				return $consulta->rowCount();

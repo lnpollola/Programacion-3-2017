@@ -23,13 +23,6 @@ desarrollo para obtener información sobre los errores
 $app = new \Slim\App(["settings" => $config]);
 
 
-$app->get('/saludar/{nombre}', function (Request $request, Response $response) {
-    
-    $nombre = $request->getAttribute('nombre');
-    $response->getBody()->write("bienvenido, $nombre");
-
-    return $response;
-});
 
 $app->post('/mostraralta', function (Request $request, Response $response) {
        
@@ -43,6 +36,25 @@ $app->post('/mostrargrilla', function (Request $request, Response $response) {
 
 });
 
+$app->delete('/borrar', function (Request $request, Response $response) {
+
+ 		
+
+		$id = $request->getParsedBody();	 
+
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta('DELETE from cds WHERE id=:id');	
+			$consulta->bindParam(":id",$id['id']);		
+			$consulta->execute();
+				
+		var_dump($consulta->rowCount());
+		
+		//return $consulta->rowCount();
+
+
+
+
+});
 
 
 

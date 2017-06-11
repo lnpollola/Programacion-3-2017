@@ -3,18 +3,18 @@
 
 function BorrarCD(idParametro)
 {
-	//alert(idParametro);
+	//alert("Estoy en Borrar cd y quiero borrar el cd "+idParametro);
 
 		var funcionAjax=$.ajax({
-		url:"nexo.php",
-		type:"post",
+		url:"http://localhost/Programacion-3-2017/PracticaParcial/borrar",
+		type:"delete",
 		data:{
-			queHacer:"BorrarCD",
+			//queHacer:"BorrarCD",
 			id:idParametro	
 		}
 	});
 	funcionAjax.done(function(retorno){
-		Mostrar("MostrarGrilla");
+		MostrarGrilla();
 		$("#informe").html("cantidad de eliminados "+ retorno);	
 		
 	});
