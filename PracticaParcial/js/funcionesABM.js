@@ -1,17 +1,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 function BorrarCD(idParametro)
 {
 	//alert(idParametro);
