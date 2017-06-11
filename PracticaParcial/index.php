@@ -22,18 +22,6 @@ desarrollo para obtener información sobre los errores
 
 $app = new \Slim\App(["settings" => $config]);
 
-$app->get('/', function (Request $request, Response $response) {
-  
-    $response->getBody()->write("Hola Slim");
-
-    return $response;
-});
-$app->get('/saludar[/]', function (Request $request, Response $response) {
-  
-    $response->getBody()->write("Hola Slim");
-
-    return $response;
-});
 
 $app->get('/saludar/{nombre}', function (Request $request, Response $response) {
     
@@ -44,14 +32,17 @@ $app->get('/saludar/{nombre}', function (Request $request, Response $response) {
 });
 
 $app->post('/mostraralta', function (Request $request, Response $response) {
-    
-    //echo "Hola";
-	
-	//$nombre = $request->getAttribute('nombre');
-    $response->getBody()->write("Bienvenido FaiveL");
+       
+   include("partes/formCd.php");
 
-    return $response;
 });
+
+$app->post('/mostrargrilla', function (Request $request, Response $response) {
+       
+   include("partes/formGrilla.php");
+
+});
+
 
 
 

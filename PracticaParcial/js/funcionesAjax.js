@@ -87,10 +87,33 @@ function MostrarAltaCd()
 		data:{queHacer:"que hace"}
 	});
 	funcionAjax.done(function(retorno){
-		$("#principal").html("asd");
+		$("#principal").html(retorno);
 		//$("#informe").html("Correcto BOTONES!!!");	
 	});
 }
+
+function MostrarGrilla()
+{		
+	
+	//alert("llegue");
+	var funcionAjax=$.ajax({
+		url:"http://localhost/Programacion-3-2017/PracticaParcial/mostrargrilla",
+		type:"post",
+		data:{queHacer:"que hace"}
+	});
+	funcionAjax.done(function(retorno){
+		$("#principal").html(retorno);
+		//$("#informe").html("Correcto BOTONES!!!");	
+	});
+}
+
+
+
+
+
+
+
+
 
 function validarLogin()
 {
@@ -119,7 +142,7 @@ function validarLogin()
 
 				$("#BotonLogin").html("Ir a salir<br>-Sesión-");
 				$("#BotonLogin").addClass("btn btn-danger");				
-				$("#usuario").val("usuario: "+retorno);
+				$("#usuario").val("Conectado");
 				//$("#informe").html("Bienvenido.. los botones de Alta y Grilla se encuentran operativos");
 					}else
 						{
