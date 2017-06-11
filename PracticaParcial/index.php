@@ -80,13 +80,19 @@ $app->post('/validarusuario', function (Request $request, Response $response) {
  $recordar=$ArrayDeParametros['recordarme'];
 
 			$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-            $consulta = $objetoAcceso->RetornarConsulta('SELECT mail, password FROM usuarios WHERE mail=:mail');
+            $consulta = $objetoAcceso->RetornarConsulta('SELECT mail as emailbd, password as clavebd FROM usuarios WHERE mail=:mail and password=:password');
             $consulta->bindParam("mail",$usuario);
-            $consulta->execute();
+            $consulta->bindParam("password",$clave);
+			
+			$consulta->execute();
 
 			$resultado = $consulta->fetchAll();
 
-if($resultado == TRUE)
+			$elementos = count($resultado);
+
+//var_dump($elementos);
+
+if($elementos>0)
 {
 	if($recordar=="true")
 					{
@@ -98,14 +104,14 @@ if($resultado == TRUE)
 						
 					}
 						$_SESSION['registrado']=$usuario;
-						$retorno=" ingreso";
+						$retorno="ingreso";
 
 }else
 		{
 			$retorno= "No-esta";
 		}
 
-
+return $retorno;
 });
 
 >>>>>>> refs/remotes/DamianVogel/master
