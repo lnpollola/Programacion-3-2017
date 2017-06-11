@@ -65,7 +65,7 @@ function MostarLogin()
 	});
 	funcionAjax.done(function(retorno){
 		$("#principal").html(retorno);
-		$("#informe").html("Por favor identifiquese");	
+		$("#informe").html("Form Login");	
 	});
 	funcionAjax.fail(function(retorno){
 		$("#botonesABM").html("volvio por el fail");
@@ -114,19 +114,19 @@ function validarLogin()
 
 	funcionAjax.done(function(retorno){
 			
-			if(retorno!="No-esta"){	
+			if(retorno=="ingreso"){	
 				MostarLogin();
 
 				$("#BotonLogin").html("Ir a salir<br>-Sesión-");
 				$("#BotonLogin").addClass("btn btn-danger");				
 				$("#usuario").val("usuario: "+retorno);
 				//$("#informe").html("Bienvenido.. los botones de Alta y Grilla se encuentran operativos");
-		}else
-			{
-				//alert(retorno);
-				$("#informe").html("usuario o clave incorrecta");	
-				$("#formLogin").addClass("animated bounceInLeft");
-			}
+					}else
+						{
+							alert("entra en el else de validarlogin()");
+							$("#informe").html("usuario o clave incorrecta");	
+							$("#formLogin").addClass("animated bounceInLeft");
+						}
 	});
 	funcionAjax.fail(function(retorno){
 		$("#botonesABM").html(":(");
