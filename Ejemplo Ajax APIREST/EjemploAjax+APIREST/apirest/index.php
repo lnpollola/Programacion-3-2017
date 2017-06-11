@@ -73,6 +73,12 @@ $app->post('/cd[/]', function (Request $request, Response $response) {
   	$archivos['foto']->moveTo($destino.$titulo.".".$extension[0]);
     $response->getBody()->write("cd");
 
+<<<<<<< HEAD
+=======
+	
+
+
+>>>>>>> refs/remotes/DamianVogel/master
     return $response;
 
 });

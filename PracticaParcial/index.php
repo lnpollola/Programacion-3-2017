@@ -45,7 +45,11 @@ $app->get('/saludar/{nombre}', function (Request $request, Response $response) {
 
 $app->post('/mostraralta', function (Request $request, Response $response) {
     
+<<<<<<< HEAD
     echo "Hola";
+=======
+    //echo "Hola";
+>>>>>>> refs/remotes/DamianVogel/master
 	
 	//$nombre = $request->getAttribute('nombre');
     $response->getBody()->write("Bienvenido FaiveL");
@@ -57,6 +61,54 @@ $app->post('/mostraralta', function (Request $request, Response $response) {
 
 
 
+<<<<<<< HEAD
+=======
+//Registrarse
+$app->post('/mostrarlogin', function (Request $request, Response $response) {
+    
+   	include ("partes/formLogin.php"); //abre el formulario de login
+   
+});
+
+$app->post('/validarusuario', function (Request $request, Response $response) {
+
+ $ArrayDeParametros = $request->getParsedBody();  
+
+ session_start();
+ $usuario=$ArrayDeParametros['usuario'];
+ $clave=$ArrayDeParametros['clave'];
+ $recordar=$ArrayDeParametros['recordarme'];
+
+			$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
+            $consulta = $objetoAcceso->RetornarConsulta('SELECT mail, password FROM usuarios WHERE mail=:mail');
+            $consulta->bindParam("mail",$usuario);
+            $consulta->execute();
+
+			$resultado = $consulta->fetchAll();
+
+if($resultado == TRUE)
+{
+	if($recordar=="true")
+					{
+						setcookie("registro",$usuario,  time()+36000 , '/');
+						
+					}else
+					{
+						setcookie("registro",$usuario,  time()-36000 , '/');
+						
+					}
+						$_SESSION['registrado']=$usuario;
+						$retorno=" ingreso";
+
+}else
+		{
+			$retorno= "No-esta";
+		}
+
+
+});
+
+>>>>>>> refs/remotes/DamianVogel/master
 
 $app->post('/cd[/]', function (Request $request, Response $response) {
   
@@ -91,4 +143,17 @@ $app->post('/cd[/]', function (Request $request, Response $response) {
 
 });
 
+<<<<<<< HEAD
+=======
+$app->post('/desloguear', function (Request $request, Response $response) {
+    
+   	session_start();
+
+	$_SESSION['registrado']=null;
+
+	session_destroy();
+   
+});
+
+>>>>>>> refs/remotes/DamianVogel/master
 $app->run();

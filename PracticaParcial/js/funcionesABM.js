@@ -1,6 +1,7 @@
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -12,6 +13,8 @@
 
 
 
+=======
+>>>>>>> refs/remotes/DamianVogel/master
 function BorrarCD(idParametro)
 {
 	//alert(idParametro);
