@@ -22,7 +22,9 @@ if(!isset($_SESSION['registrado'])){  ?>
           <label>
             <input type="checkbox" id="recordarme" checked> Recordame
           </label>
-          
+          <br>
+          mail: asd@asd.com
+          password: 123456
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
       

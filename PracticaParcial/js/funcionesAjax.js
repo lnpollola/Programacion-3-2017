@@ -148,7 +148,7 @@ function validarLogin()
 				//$("#informe").html("Bienvenido.. los botones de Alta y Grilla se encuentran operativos");
 					}else
 						{
-							alert("entra en el else de validarlogin()");
+							alert("Usuario o clave incorrecta");
 							$("#informe").html("usuario o clave incorrecta");	
 							$("#formLogin").addClass("animated bounceInLeft");
 						}
