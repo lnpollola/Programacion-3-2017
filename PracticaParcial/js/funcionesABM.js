@@ -82,15 +82,12 @@ function GuardarCD()
 	}).then(function(respuesta){
 		alert("Agregado correctamente");
 		
-		$("#informe").html("cantidad de agregados "+ respuesta);	
+		//$("#informe").html("cantidad de agregados "+ respuesta);	
 		
 		$("#cantante").val("");
 		$("#titulo").val("");
 		$("#anio").val("");
-		
-		
-		
-		
+		$("#foto").val("");
 		//console.log("guardar cd");
 
 	},function(error){

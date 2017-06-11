@@ -27,6 +27,7 @@ foreach ($arrayDeCds as $cd) {
 			<td>$cd->cantante</td>
 			<td>$cd->titulo</td>
 			<td>$cd->año</td>
+			<td><img src='".$cd->archivo."' width='1' height='1'/></td>
 		</tr>   ";
 }
 		 ?>
