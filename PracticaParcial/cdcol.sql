@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-06-2017 a las 18:27:08
+-- Tiempo de generación: 12-06-2017 a las 03:20:11
 -- Versión del servidor: 10.1.22-MariaDB
 -- Versión de PHP: 7.1.4
 
@@ -41,10 +41,9 @@ CREATE TABLE `cds` (
 --
 
 INSERT INTO `cds` (`titel`, `interpret`, `jahr`, `id`, `archivo`) VALUES
-('La Carne', 'Eruca Sativa', 2018, 27, './fotos/La Carne.jpg'),
-('Goodbye Country (Hello Nightclub)', 'Groove Armada', 2001, 4, ''),
-('Glee', 'Bran Van 3000', 1997, 5, ''),
-('jajajajaja', 'Edguay', 2000, 28, './fotos/jajajajaja.jpg');
+('Master Of Puppets', 'Metallica', 1991, 33, './fotos/Master Of Puppets.jpg'),
+('La Carne', 'Eruca Sativa', 2003, 36, './fotos/La Carne.jpg'),
+('Countdown to Extinction', 'Megadeth', 2000, 39, './fotos/Countdown to Extinction.jpg');
 
 -- --------------------------------------------------------
 
@@ -83,7 +82,7 @@ ALTER TABLE `cds`
 -- AUTO_INCREMENT de la tabla `cds`
 --
 ALTER TABLE `cds`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;COMMIT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
