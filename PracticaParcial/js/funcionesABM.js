@@ -101,3 +101,58 @@ function GuardarCD()
 	});
 	
 }
+
+function UpdateCD()
+{
+
+	alert("estoy en ajax de updateCD");
+	
+	
+	var inputFileImage = document.getElementById("foto");
+	var file = inputFileImage.files[0];
+	var datosDelForm = new FormData("formcd");
+	//console.info(file);
+
+	
+	var titulo=$("#titulo").val();
+	var id=$("#idCD").val();
+	var cantante=$("#cantante").val();
+	var anio=$("#anio").val();
+
+	alert(titulo);
+
+	datosDelForm.append("foto",file);
+	datosDelForm.append("titulo",titulo);
+	datosDelForm.append("id",id);
+	datosDelForm.append("cantante",cantante);
+	datosDelForm.append("anio",anio);		
+		
+		
+
+	var funcionAjax=$.ajax({
+		url:"http://localhost/Programacion-3-2017/PracticaParcial/update",
+		type:"post",
+		data:datosDelForm,
+		cache: false,
+    	contentType: false,
+    	processData: false
+
+	}).then(function(respuesta){
+		alert("Modificado correctamente");
+		
+		//$("#informe").html("cantidad de agregados "+ respuesta);	
+		
+		$("#cantante").val("");
+		$("#titulo").val("");
+		$("#anio").val("");
+		$("#foto").val("");
+		//console.log("guardar cd");
+
+	},function(error){
+
+			$("#informe").html(error.responseText);
+			console.info("error", error);
+
+	});
+	
+}

@@ -9,7 +9,7 @@ if(isset($_SESSION['registrado'])){  ?>
       <form class="form-ingreso" onsubmit="GuardarCD();return false" enctype="multipart/form-data" id="formcd">
         <h2 class="form-ingreso-heading">CD</h2>
         <label for="cantante" value="natalia" class="sr-only">Cantante</label>
-        <input type="text"  minlength="6"  id="cantantemod" title="Se necesita un nombre de cantante" class="form-control" placeholder="Cantante" required="" autofocus="">
+        <input type="text"  minlength="6"  id="cantante" title="Se necesita un nombre de cantante" class="form-control" placeholder="Cantante" required="" autofocus="">
         <label for="titulo" value="un titulo" class="sr-only">Titulo</label>
         <input type="text"  minlength="6"  id="titulo" title="Se necesita un titulo del disco"  class="form-control" placeholder="Titulo" required="" autofocus="">
         <label for="anio" class="sr-only">Año</label>

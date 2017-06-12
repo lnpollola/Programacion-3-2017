@@ -86,7 +86,7 @@ $app->post('/modificar', function (Request $request, Response $response) {
         <input type=text  minlength=6  id=titulo value='".$cdBuscado->titulo."'  class=form-control placeholder=Titulo required= autofocus=>
         <label for=anio class=sr-only>Año</label>
         <input type=number value='".$cdBuscado->año."' min=1900  max=2099 id=anio class=form-control placeholder=año required= autofocus=>
-       <input readonly   type=hidden    id='".$cdBuscado->id."' class=form-control >
+       <input readonly   type=hidden    id=idCD value='".$cdBuscado->id."' class=form-control >
        <input type=file id=foto name=foto value='".$cdBuscado->archivo."'>
         <button  class='btn btn-lg btn-success btn-block' type=submit><span class='glyphicon glyphicon-floppy-save'>&nbsp;&nbsp;</span>Modificar </button>
         
@@ -203,6 +203,62 @@ $app->post('/cd[/]', function (Request $request, Response $response) {
   //  return $response;
 
 });
+
+$app->post('/update', function (Request $request, Response $response) {
+  
+  	$destino="./fotos/";
+  	$ArrayDeParametros = $request->getParsedBody();
+  	
+	//var_dump($ArrayDeParametros);
+  	$titulo= $ArrayDeParametros['titulo'];
+  	$cantante= $ArrayDeParametros['cantante'];
+  	$año= $ArrayDeParametros['anio'];
+  	$id = $ArrayDeParametros['id'];
+
+
+  	$micd = new cd();
+  	$micd->titulo=$titulo;
+  	$micd->cantante=$cantante;
+  	$micd->año=$año;
+  //	$micd->InsertarElCdParametros();
+
+  	$archivos = $request->getUploadedFiles();
+  	//var_dump($ArrayDeParametros);
+  	//var_dump($archivos);
+  	//var_dump($archivos['foto']);
+
+
+	$nombreAnterior=$archivos['foto']->getClientFilename();
+	$extension= explode(".", $nombreAnterior)  ;
+	//var_dump($nombreAnterior);
+	$extension=array_reverse($extension);
+
+  	$archivos['foto']->moveTo($destino.$titulo.".".$extension[0]);
+    
+	$path = $destino.$titulo.".".$extension[0];
+
+	
+
+		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
+		
+		
+		$consulta = $objetoAcceso->RetornarConsulta('UPDATE `cds`set archivo=:archivo, interpret=:interpret, jahr=:jahr,titel=:titel WHERE id=:id');
+		$consulta->bindParam("id",$id);
+        $consulta->bindParam("archivo",$path);
+        $consulta->bindParam("interpret",$micd->cantante);
+		$consulta->bindParam("jahr",$micd->año);
+        $consulta->bindParam("titel",$micd->titulo);
+		
+		$consulta->Execute();
+
+	
+  //  return $response;
+
+});
+
+
+
+
 
 $app->post('/desloguear', function (Request $request, Response $response) {
     
