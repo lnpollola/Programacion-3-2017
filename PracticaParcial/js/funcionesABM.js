@@ -17,18 +17,18 @@
 >>>>>>> refs/remotes/DamianVogel/master
 function BorrarCD(idParametro)
 {
-	//alert(idParametro);
+	//alert("Estoy en Borrar cd y quiero borrar el cd "+idParametro);
 
 		var funcionAjax=$.ajax({
-		url:"nexo.php",
-		type:"post",
+		url:"http://localhost/Programacion-3-2017/PracticaParcial/borrar",
+		type:"delete",
 		data:{
-			queHacer:"BorrarCD",
+			//queHacer:"BorrarCD",
 			id:idParametro	
 		}
 	});
 	funcionAjax.done(function(retorno){
-		Mostrar("MostrarGrilla");
+		MostrarGrilla();
 		$("#informe").html("cantidad de eliminados "+ retorno);	
 		
 	});
@@ -39,30 +39,36 @@ function BorrarCD(idParametro)
 
 function EditarCD(idParametro)
 {
+	//alert("entro al ajax de modificar CD");
+
 	var funcionAjax=$.ajax({
-		url:"nexo.php",
+		url:"http://localhost/Programacion-3-2017/PracticaParcial/modificar",
 		type:"post",
 		data:{
-			queHacer:"TraerCD",
+			//queHacer:"TraerCD",
 			id:idParametro	
 		}
 	});
 	funcionAjax.done(function(retorno){
-		var cd =JSON.parse(retorno);	
-		$("#idCD").val(cd.id);
-		$("#cantante").val(cd.cantante);
-		$("#titulo").val(cd.titulo);
-		$("#anio").val(cd.año);
+		
+		$("#principal").html(retorno);
+		
 	});
 	funcionAjax.fail(function(retorno){	
 		$("#informe").html(retorno.responseText);	
 	});	
-	Mostrar("MostrarFormAlta");
+	
+	
+
+
 }
 
 function GuardarCD()
 {
 
+	//alert("estoy en ajax de guardarCD");
+	
+	
 	var inputFileImage = document.getElementById("foto");
 	var file = inputFileImage.files[0];
 	var datosDelForm = new FormData("formcd");
@@ -83,7 +89,7 @@ function GuardarCD()
 		
 
 	var funcionAjax=$.ajax({
-		url:"http://localhost:8080/EjemploAjax+APIREST/apirest/cd/",
+		url:"http://localhost/Programacion-3-2017/PracticaParcial/cd",
 		type:"post",
 		data:datosDelForm,
 		cache: false,
@@ -91,8 +97,70 @@ function GuardarCD()
     	processData: false
 
 	}).then(function(respuesta){
-		$("#informe").html("cantidad de agregados "+ respuesta);	
-		console.log("guardar cd");
+		alert("Agregado correctamente");
+		
+		//$("#informe").html("cantidad de agregados "+ respuesta);	
+		
+		$("#cantante").val("");
+		$("#titulo").val("");
+		$("#anio").val("");
+		$("#foto").val("");
+		//console.log("guardar cd");
+
+	},function(error){
+
+			$("#informe").html(error.responseText);
+			console.info("error", error);
+
+	});
+	
+}
+
+function UpdateCD()
+{
+
+	//alert("estoy en ajax de updateCD");
+	
+	
+	var inputFileImage = document.getElementById("foto");
+	var file = inputFileImage.files[0];
+	var datosDelForm = new FormData("formcd");
+	//console.info(file);
+
+	
+	var titulo=$("#titulo").val();
+	var id=$("#idCD").val();
+	var cantante=$("#cantante").val();
+	var anio=$("#anio").val();
+
+	//alert(titulo);
+
+	datosDelForm.append("foto",file);
+	datosDelForm.append("titulo",titulo);
+	datosDelForm.append("id",id);
+	datosDelForm.append("cantante",cantante);
+	datosDelForm.append("anio",anio);		
+		
+		
+
+	var funcionAjax=$.ajax({
+		url:"http://localhost/Programacion-3-2017/PracticaParcial/update",
+		type:"post",
+		data:datosDelForm,
+		cache: false,
+    	contentType: false,
+    	processData: false
+
+	}).then(function(respuesta){
+		alert("Modificado correctamente");
+		
+		//$("#informe").html("cantidad de agregados "+ respuesta);	
+		
+		$("#cantante").val("");
+		$("#titulo").val("");
+		$("#anio").val("");
+		$("#foto").val("");
+		//console.log("guardar cd");
 
 	},function(error){
 

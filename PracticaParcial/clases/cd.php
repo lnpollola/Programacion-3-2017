@@ -5,14 +5,15 @@ class cd
  	public $titulo;
   	public $cantante;
   	public $año;
+	public $archivo;
 
   	public function BorrarCd()
 	 {
 	 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("
-				delete 
+			$consulta =$objetoAccesoDato->RetornarConsulta('
+				DELETE
 				from cds 				
-				WHERE id=:id");	
+				WHERE id=:id');	
 				$consulta->bindValue(':id',$this->id, PDO::PARAM_INT);		
 				$consulta->execute();
 				return $consulta->rowCount();
@@ -49,7 +50,7 @@ class cd
 	 public function InsertarElCd()
 	 {
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into cds (titel,interpret,jahr)values('$this->titulo','$this->cantante','$this->año')");
+				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into cds (titel,interpret,jahr, archivo)values('$this->titulo','$this->cantante','$this->año',$this->archivo)");
 				$consulta->execute();
 				return $objetoAccesoDato->RetornarUltimoIdInsertado();
 				
@@ -98,7 +99,7 @@ class cd
   	public static function TraerTodoLosCds()
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("select id,titel as titulo, interpret as cantante,jahr as año from cds");
+			$consulta =$objetoAccesoDato->RetornarConsulta("select id,titel as titulo, interpret as cantante,jahr as año, archivo as archivo from cds");
 			$consulta->execute();			
 			return $consulta->fetchAll(PDO::FETCH_CLASS, "cd");		
 	}
@@ -106,7 +107,7 @@ class cd
 	public static function TraerUnCd($id) 
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("select id, titel as titulo, interpret as cantante,jahr as año from cds where id = $id");
+			$consulta =$objetoAccesoDato->RetornarConsulta("select id, titel as titulo, interpret as cantante,jahr as año, archivo as archivo from cds where id = $id");
 			$consulta->execute();
 			$cdBuscado= $consulta->fetchObject('cd');
 			return $cdBuscado;				
@@ -117,7 +118,7 @@ class cd
 	public static function TraerUnCdAnio($id,$anio) 
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("select  titel as titulo, interpret as cantante,jahr as año from cds  WHERE id=? AND jahr=?");
+			$consulta =$objetoAccesoDato->RetornarConsulta("select  titel as titulo, interpret as cantante,jahr as año, archivo as archivo from cds  WHERE id=? AND jahr=?");
 			$consulta->execute(array($id, $anio));
 			$cdBuscado= $consulta->fetchObject('cd');
       		return $cdBuscado;				
@@ -128,7 +129,7 @@ class cd
 	public static function TraerUnCdAnioParamNombre($id,$anio) 
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("select  titel as titulo, interpret as cantante,jahr as año from cds  WHERE id=:id AND jahr=:anio");
+			$consulta =$objetoAccesoDato->RetornarConsulta("select  titel as titulo, interpret as cantante,jahr as año, archivo as archivo from cds  WHERE id=:id AND jahr=:anio");
 			$consulta->bindValue(':id', $id, PDO::PARAM_INT);
 			$consulta->bindValue(':anio', $anio, PDO::PARAM_STR);
 			$consulta->execute();
@@ -141,7 +142,7 @@ class cd
 	public static function TraerUnCdAnioParamNombreArray($id,$anio) 
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("select  titel as titulo, interpret as cantante,jahr as año from cds  WHERE id=:id AND jahr=:anio");
+			$consulta =$objetoAccesoDato->RetornarConsulta("select  titel as titulo, interpret as cantante,jahr as año, archivo as archivo from cds  WHERE id=:id AND jahr=:anio");
 			$consulta->execute(array(':id'=> $id,':anio'=> $anio));
 			$consulta->execute();
 			$cdBuscado= $consulta->fetchObject('cd');
