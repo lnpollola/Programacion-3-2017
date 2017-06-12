@@ -51,7 +51,7 @@ function MostrarAltaCd()
 	var funcionAjax=$.ajax({
 		url:"http://localhost/Programacion-3-2017/PracticaParcial/mostraralta",
 		type:"post",
-		data:{queHacer:"que hace"}
+		//data:{queHacer:"que hace"}
 	});
 	funcionAjax.done(function(retorno){
 		$("#principal").html(retorno);
@@ -74,6 +74,20 @@ function MostrarGrilla()
 	});
 }
 
+function MostrarModificacion()
+{		
+	
+	//alert("llegue");
+	var funcionAjax=$.ajax({
+		url:"http://localhost/Programacion-3-2017/PracticaParcial/mostrarmodificacion",
+		type:"post",
+		//data:{queHacer:"que hace"}
+	});
+	funcionAjax.done(function(retorno){
+		$("#principal").html(retorno);
+		//$("#informe").html("Correcto BOTONES!!!");	
+	});
+}
 
 
 

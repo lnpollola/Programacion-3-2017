@@ -25,25 +25,28 @@ function BorrarCD(idParametro)
 
 function EditarCD(idParametro)
 {
+	alert("entro al ajax de modificar CD");
+
 	var funcionAjax=$.ajax({
-		url:"nexo.php",
+		url:"http://localhost/Programacion-3-2017/PracticaParcial/modificar",
 		type:"post",
 		data:{
-			queHacer:"TraerCD",
+			//queHacer:"TraerCD",
 			id:idParametro	
 		}
 	});
 	funcionAjax.done(function(retorno){
-		var cd =JSON.parse(retorno);	
-		$("#idCD").val(cd.id);
-		$("#cantante").val(cd.cantante);
-		$("#titulo").val(cd.titulo);
-		$("#anio").val(cd.año);
+		
+		$("#principal").html(retorno);
+		
 	});
 	funcionAjax.fail(function(retorno){	
 		$("#informe").html(retorno.responseText);	
 	});	
-	Mostrar("MostrarFormAlta");
+	//MostrarAltaCd();
+	
+
+
 }
 
 function GuardarCD()
