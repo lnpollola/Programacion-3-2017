@@ -25,7 +25,7 @@ function BorrarCD(idParametro)
 
 function EditarCD(idParametro)
 {
-	alert("entro al ajax de modificar CD");
+	//alert("entro al ajax de modificar CD");
 
 	var funcionAjax=$.ajax({
 		url:"http://localhost/Programacion-3-2017/PracticaParcial/modificar",
@@ -43,7 +43,7 @@ function EditarCD(idParametro)
 	funcionAjax.fail(function(retorno){	
 		$("#informe").html(retorno.responseText);	
 	});	
-	//MostrarAltaCd();
+	
 	
 
 
@@ -105,7 +105,7 @@ function GuardarCD()
 function UpdateCD()
 {
 
-	alert("estoy en ajax de updateCD");
+	//alert("estoy en ajax de updateCD");
 	
 	
 	var inputFileImage = document.getElementById("foto");
@@ -119,7 +119,7 @@ function UpdateCD()
 	var cantante=$("#cantante").val();
 	var anio=$("#anio").val();
 
-	alert(titulo);
+	//alert(titulo);
 
 	datosDelForm.append("foto",file);
 	datosDelForm.append("titulo",titulo);
